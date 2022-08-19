@@ -1,0 +1,24 @@
+{
+  "name": "movieapi",
+  "version": "1.0.0",
+  "description": "Web page made for practicing REST API",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodoPZ/MovieAPI.git"
+  },
+  "keywords": [
+    "api",
+    "javascript",
+    "movies"
+  ],
+  "author": "Rodopz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RodoPZ/MovieAPI/issues"
+  },
+  "homepage": "https://github.com/RodoPZ/MovieAPI#readme"
+}
