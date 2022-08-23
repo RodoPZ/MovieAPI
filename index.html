@@ -5,11 +5,258 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieAPI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/app.css">
 </head>
 <body>
-    <H1>MovieAPI</H1>
-    <script src="./src/secrets.js"></script>
+    <nav class="navbar">
+        <img class="navbar__logo" src="./images/logo/Logo__no_title.png" alt="logo">
+        <div class="link_container">
+            <ul>
+                <li class="navbar__link body-1"><a class="a-link" href="/">Inicio</a></li>
+                <li class="navbar__link body-1"><a class="a-link" href="/">Películas</a></li>
+                <li class="navbar__link body-1"><a class="a-link" href="/">Series</a></li>
+                <li class="navbar__link body-1"><a class="a-link" href="/">Géneros</a></li>
+                <li class="navbar__link body-1"><a class="a-link" href="/">Mi lista</a></li>
+            </ul>
+            <img class="navbar__search-btn" src="./images/icon/Search.svg" alt="search icon">
+            <button type="button" class="navbar__login font-style-button" > Entrar</button>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="limit_container">
+            <div class="dot-container">
+                <div class="dot-container__dot"></div>
+                <div class="dot-container__dot"></div>
+                <div class="dot-container__dot"></div>
+                <div class="dot-container__dot--selected"></div>
+                <div class="dot-container__dot"></div>
+                <div class="dot-container__dot"></div>
+            </div>
+            <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image">
+            <img class="hero__image--center" src="./images/img/poster_hero.png" alt="movie poster image">
+            <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image">
+        </div>
+    </section>
+    <section class="carousel_section">
+        <article class="carousel">
+            <H2 class="carousel__title">Terror</H2>
+            <div class="carousel__image_group" id="imageGroup1">
+                <!-- <img class="carousel_image" src="./images/img/poster_backdrops.png" alt="movie backdrop"> -->
+                <div class="carousel__shade--left"></div>
+                <div class="carousel__shade--right"></div>
+                <svg class="carousel__next" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
+                </svg>
+                <svg class="carousel__last"viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
+                </svg>
+          </div>
+        </article>
+
+        <article class="carousel">
+            <H2 class="carousel__title">Comedia</H2>
+            <div class="carousel__image_group" id="imageGroup2">
+                <!-- <img class="carousel_image" src="./images/img/poster_backdrops.png" alt="movie backdrop"> -->
+
+                <div class="carousel__shade--left"></div>
+                <div class="carousel__shade--right"></div>
+                <svg class="carousel__next" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
+                </svg>
+                <svg class="carousel__last"viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
+                </svg>
+          </div>
+        </article>
+
+        <article class="carousel">
+            <H2 class="carousel__title">Acción</H2>
+            <div class="carousel__image_group" id="imageGroup3">
+                <!-- <img class="carousel_image" src="./images/img/poster_backdrops.png" alt="movie backdrop"> -->
+
+                <div class="carousel__shade--left"></div>
+                <div class="carousel__shade--right"></div>
+                <svg class="carousel__next" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
+                </svg>
+                <svg class="carousel__last"viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
+                </svg>
+          </div>
+        </article>
+    </section>
+    <aside class="top" id="aside_top">
+        <H3 class="top__title">Top</H3>
+        <!-- <div class="Card">
+            <img class="Card__img" src="./images/img/poster_image.png" alt="movie poster image">
+            <div class="Card__text_container">
+                <H6 class="Card__title">Título</H6>
+                <div class="Card__subtitle_container">
+                    <p class="font-style-subtitle-1">5/5</p>
+                    <p class="font-style-subtitle-1">1h 1m</p>
+                    <p class="font-style-subtitle-1">2022</p>
+                </div>
+            </div>
+        </div> -->
+ 
+    </aside>
+    <section class="lower_section">
+        <article class="lower">
+            <div class="lower__button_container">
+                <button class="lower__button--selected" type="button">
+                    <H3 class="lower__button_title"> Últimas </H3>
+                </button>
+                <button class="lower__button" type="button">
+                    <H3 class="lower__button_title"> Estrenos </H3>
+                </button>
+                <button class="lower__button" type="button">
+                    <H3 class="lower__button_title"> Ranking </H3>
+                </button>
+            </div>
+            <div class="lower_row">
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+            </div>
+            <div class="lower_row">
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+            </div>
+            <div class="lower_row">
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+                <div class="lower__card">
+                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
+                    <H5 class="lower__title">Title</H5>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__logos">
+            <img class="footer__logo--MovieApi" src="./images/logo/logo.png" alt="MovieApi logo">
+            <img class="footer__logo--image" src="./images/logo/TMBD logo.png" alt="The movie database logo">
+        </div>
+        <div class="footer__links">
+            <a href="" class="footer__link font-style-body-2">Legal Advise</a>
+            <a href="" class="footer__link font-style-body-2">MovieAPI</a>
+            <a href="" class="footer__link font-style-body-2">TMDB</a>
+            <a href="" class="footer__link font-style-body-2">Help</a>
+            <a href="" class="footer__link font-style-body-2">Privacy</a>
+        </div>
+        <div class="footer__social">
+            <a href="" class="social-button">
+                <svg class="social-button__image" alt="facebook link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 8.04467C0 12.022 2.88867 15.3293 6.66667 16V10.222H4.66667V8H6.66667V6.222C6.66667 4.222 7.95533 3.11133 9.778 3.11133C10.3553 3.11133 10.978 3.2 11.5553 3.28867V5.33333H10.5333C9.55533 5.33333 9.33333 5.822 9.33333 6.44467V8H11.4667L11.1113 10.222H9.33333V16C13.1113 15.3293 16 12.0227 16 8.04467C16 3.62 12.4 0 8 0C3.6 0 0 3.62 0 8.04467Z"/>
+                </svg>
+            </a>
+            <a href="" class="social-button">
+                <svg class="social-button__image" alt="Instagram link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.08 7.68C10.08 8.31652 9.82714 8.92697 9.37706 9.37706C8.92697 9.82714 8.31652 10.08 7.68 10.08C7.04348 10.08 6.43303 9.82714 5.98294 9.37706C5.53286 8.92697 5.28 8.31652 5.28 7.68C5.28 7.5432 5.2944 7.4096 5.3192 7.28H4.48V10.4776C4.48 10.7 4.66 10.88 4.8824 10.88H10.4784C10.585 10.8798 10.6871 10.8373 10.7624 10.7619C10.8377 10.6864 10.88 10.5842 10.88 10.4776V7.28H10.0408C10.0656 7.4096 10.08 7.5432 10.08 7.68ZM7.68 9.28C7.89017 9.27995 8.09827 9.2385 8.29242 9.15802C8.48657 9.07755 8.66296 8.95962 8.81154 8.81097C8.96011 8.66232 9.07795 8.48587 9.15833 8.29168C9.23871 8.09749 9.28005 7.88937 9.28 7.6792C9.27995 7.46903 9.2385 7.26093 9.15802 7.06678C9.07755 6.87263 8.95962 6.69624 8.81097 6.54766C8.66232 6.39909 8.48587 6.28125 8.29168 6.20087C8.09749 6.12049 7.88937 6.07915 7.6792 6.0792C7.25475 6.07931 6.84772 6.24802 6.54766 6.54823C6.24761 6.84844 6.07909 7.25555 6.0792 7.68C6.07931 8.10445 6.24802 8.51148 6.54823 8.81154C6.84844 9.1116 7.25555 9.28011 7.68 9.28ZM9.6 6H10.5592C10.6229 6 10.6841 5.97474 10.7292 5.92975C10.7743 5.88477 10.7998 5.82373 10.8 5.76V4.8008C10.8 4.73694 10.7746 4.67569 10.7295 4.63053C10.6843 4.58537 10.6231 4.56 10.5592 4.56H9.6C9.53614 4.56 9.47489 4.58537 9.42973 4.63053C9.38457 4.67569 9.3592 4.73694 9.3592 4.8008V5.76C9.36 5.892 9.468 6 9.6 6ZM7.68 0C5.64314 0 3.6897 0.80914 2.24942 2.24942C0.80914 3.6897 0 5.64314 0 7.68C0 9.71686 0.80914 11.6703 2.24942 13.1106C3.6897 14.5509 5.64314 15.36 7.68 15.36C8.68855 15.36 9.68723 15.1614 10.619 14.7754C11.5508 14.3894 12.3974 13.8237 13.1106 13.1106C13.8237 12.3974 14.3894 11.5508 14.7754 10.619C15.1614 9.68723 15.36 8.68855 15.36 7.68C15.36 6.67145 15.1614 5.67277 14.7754 4.74099C14.3894 3.80921 13.8237 2.96257 13.1106 2.24942C12.3974 1.53627 11.5508 0.970561 10.619 0.584605C9.68723 0.198649 8.68855 0 7.68 0ZM11.68 10.7912C11.68 11.28 11.28 11.68 10.7912 11.68H4.5688C4.08 11.68 3.68 11.28 3.68 10.7912V4.5688C3.68 4.08 4.08 3.68 4.5688 3.68H10.7912C11.28 3.68 11.68 4.08 11.68 4.5688V10.7912Z"/>
+                </svg>
+            </a>
+            <a href="" class="social-button">
+                <svg class="social-button__image" alt="Twitter link" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 0C3.58214 0 0 3.58214 0 8C0 12.4179 3.58214 16 8 16C12.4179 16 16 12.4179 16 8C16 3.58214 12.4179 0 8 0ZM11.8446 6.03036C11.85 6.11429 11.85 6.20179 11.85 6.2875C11.85 8.90893 9.85357 11.9286 6.20536 11.9286C5.08036 11.9286 4.0375 11.6018 3.15893 11.0393C3.31964 11.0571 3.47321 11.0643 3.6375 11.0643C4.56607 11.0643 5.41964 10.75 6.1 10.2179C5.22857 10.2 4.49643 9.62857 4.24643 8.84286C4.55179 8.8875 4.82679 8.8875 5.14107 8.80714C4.69237 8.71598 4.28906 8.47229 3.99967 8.11747C3.71028 7.76265 3.55265 7.31858 3.55357 6.86071V6.83571C3.81607 6.98393 4.125 7.075 4.44821 7.0875C4.1765 6.90642 3.95368 6.66109 3.79948 6.37327C3.64529 6.08544 3.56451 5.76402 3.56429 5.4375C3.56429 5.06786 3.66071 4.73036 3.83393 4.4375C4.33197 5.0506 4.95345 5.55204 5.65797 5.90922C6.3625 6.26641 7.1343 6.47135 7.92321 6.51071C7.64286 5.1625 8.65 4.07143 9.86071 4.07143C10.4321 4.07143 10.9464 4.31071 11.3089 4.69643C11.7571 4.6125 12.1857 4.44464 12.5679 4.21964C12.4196 4.67857 12.1089 5.06607 11.6964 5.31071C12.0964 5.26786 12.4821 5.15714 12.8393 5.00179C12.5696 5.39821 12.2321 5.75 11.8446 6.03036Z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="lenguage">
+            <p class="lenguage__title font-style-body-2">Lenguage:</p>
+            <a class="lenguage__link font-style-body-2" href="">ES</a>
+            <a class="lenguage__link font-style-body-2" href="">EN</a>
+        </div>
+    </footer>
+    <script src="./src/secret.js"></script>
     <script src="./src/main.js"></script>
 </body>
 </html>
