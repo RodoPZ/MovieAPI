@@ -286,7 +286,7 @@ h6{
     margin-bottom: 40px;
 }
 .lower_section{
-    margin: 0px 32px;
+    margin: 0px 20px;
 }
 
 .lower__button_container{
@@ -315,8 +315,9 @@ h6{
 .lower__button_title{
     margin: 0px;
 }
-.lower_row{
-    display: inline-flex;
+.lower_content{
+    display: flex;
+    flex-wrap: wrap;
     gap:16px;
 }
 .lower__card{

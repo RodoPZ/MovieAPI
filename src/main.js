@@ -1,5 +1,45 @@
+let selected = "btn1";
+
+
+async function getUpcomingMovies(id,limit){
+
+    const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${APIKEY}`);
+    const data = await res.json();
+    const movies = data.results.slice(0,3);;
+    console.log(movies);
+    
+    // if(selected!=id){
+    //     const lastSelected = document.getElementById(selected);
+    //     const newSelected = document.getElementById(id);
+    //     selected = id;
+    //     lastSelected.className = "lower__button";
+    //     newSelected.className = "lower__button--selected";
+    // }
+
+   
+    movies.forEach((movie,index) => {
+        if(movie.poster_path != null){
+
+            const limitContainer = document.getElementById("limitContainer");
+            const img = document.createElement("img");
+            if(index!=1){
+                img.classList.add("hero__image");
+            }else{
+                img.classList.add("hero__image--center");
+            }
+            img.setAttribute("src",'https://image.tmdb.org/t/p/w1280/'+movie.backdrop_path);
+            img.setAttribute("alt", movie.title + ' poster image');
+
+            limitContainer.appendChild(img);
+
+            // <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image"></img>
+        }
+    });
+
+    return selected;
+}
 async function getTrendingMoviesPreview(){
-    const res = await fetch('https://api.themoviedb.org/3/trending/movie/day?api_key=' + APIKEY);
+    const res = await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=' + APIKEY);
     const data = await res.json();
     const movies = data.results.slice(0,5);
     movies.forEach(movie => {
@@ -55,12 +95,50 @@ async function getMoviesByGenre(genreId,limit,elementId){
 /* <img class="carousel_image" src="./images/img/poster_backdrops.png" alt="movie backdrop"> */
     });
 }
+async function getFilteredMovies(argument,id){
 
+    const res = await fetch(`https://api.themoviedb.org/3/discover/movie?${argument}&api_key=${APIKEY}`);
+    const data = await res.json();
+    const movies = data.results;
+    console.log(id,selected);
+    
+    if(selected!=id){
+        const lastSelected = document.getElementById(selected);
+        const newSelected = document.getElementById(id);
+        selected = id;
+        lastSelected.className = "lower__button";
+        newSelected.className = "lower__button--selected";
+    }
+
+    const lowerContent = document.getElementById("lowerContent");
+    lowerContent.replaceChildren();
+    
+    movies.forEach(movie => {
+        if(movie.poster_path != null){
+
+
+            const lowerCard = document.createElement('div');
+            lowerCard.classList.add("lower__card");
+    
+            const lowerImage = document.createElement('img');
+            lowerImage.classList.add("lower__image");
+            lowerImage.setAttribute('src','https://image.tmdb.org/t/p/w1280/'+movie.poster_path);
+    
+            const lowerTitle = document.createElement("H5");
+            lowerTitle.classList.add("lower__title");
+            lowerTitle.innerText = movie.title;
+    
+            lowerCard.appendChild(lowerImage);
+            lowerCard.appendChild(lowerTitle);
+            lowerContent.appendChild(lowerCard);
+        }
+    });
+    return selected;
+}
+getUpcomingMovies("btn1",3);
 getTrendingMoviesPreview();
 getMoviesByGenre(27,4,"imageGroup1");
 getMoviesByGenre(35,4,"imageGroup2");
 getMoviesByGenre(28,4,"imageGroup3");
-
-
-getComedicMovies();
-getActionMovies();
+// getFilteredMovies("sort_by=vote_count.desc");
+getFilteredMovies("sort_by=release_date.desc","btn1");

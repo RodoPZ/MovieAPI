@@ -26,7 +26,7 @@
         </div>
     </nav>
     <section class="hero">
-        <div class="limit_container">
+        <div class="limit_container" id="limitContainer">
             <div class="dot-container">
                 <div class="dot-container__dot"></div>
                 <div class="dot-container__dot"></div>
@@ -35,9 +35,9 @@
                 <div class="dot-container__dot"></div>
                 <div class="dot-container__dot"></div>
             </div>
-            <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image">
+            <!-- <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image">
             <img class="hero__image--center" src="./images/img/poster_hero.png" alt="movie poster image">
-            <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image">
+            <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image"> -->
         </div>
     </section>
     <section class="carousel_section">
@@ -106,118 +106,24 @@
     <section class="lower_section">
         <article class="lower">
             <div class="lower__button_container">
-                <button class="lower__button--selected" type="button">
+                <button id="btn1" class="lower__button--selected" type="button" onclick="getFilteredMovies('sort_by=release_date.desc',this.id)">
                     <H3 class="lower__button_title"> Últimas </H3>
                 </button>
-                <button class="lower__button" type="button">
-                    <H3 class="lower__button_title"> Estrenos </H3>
+                <button id="btn2" class="lower__button" type="button" onclick="getFilteredMovies('sort_by=vote_count.desc',this.id)">
+                    <H3 class="lower__button_title"> Más votadas </H3>
                 </button>
-                <button class="lower__button" type="button">
-                    <H3 class="lower__button_title"> Ranking </H3>
+                <button id="btn3" class="lower__button" type="button"  onclick="getFilteredMovies('sort_by=popularity.desc',this.id)">
+                    <H3 class="lower__button_title"> Populares </H3>
                 </button>
             </div>
-            <div class="lower_row">
-                <div class="lower__card">
+            <div class="lower_content" id="lowerContent">
+                <!-- <div class="lower__card">
                     <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
                     <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
+                </div> -->
+
             </div>
-            <div class="lower_row">
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-            </div>
-            <div class="lower_row">
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-                <div class="lower__card">
-                    <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
-                    <H5 class="lower__title">Title</H5>
-                </div>
-            </div>
+
         </article>
     </section>
 
@@ -229,7 +135,7 @@
         <div class="footer__links">
             <a href="" class="footer__link font-style-body-2">Legal Advise</a>
             <a href="" class="footer__link font-style-body-2">MovieAPI</a>
-            <a href="" class="footer__link font-style-body-2">TMDB</a>
+            <a href="https://www.themoviedb.org/" class="footer__link font-style-body-2">TMDB</a>
             <a href="" class="footer__link font-style-body-2">Help</a>
             <a href="" class="footer__link font-style-body-2">Privacy</a>
         </div>
