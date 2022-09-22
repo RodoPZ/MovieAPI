@@ -1,3 +1,9 @@
+import axios from "axios";
+import {APIKEY} from "./secret";
+import { Movie } from "./models/movie.model";
+import { heroMovieList, genreMovieList } from "./models/movielist.model";
+
+
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: {
@@ -8,39 +14,49 @@ const api = axios.create({
     },
 });
 
-// Used in hero
-let movieList = [];
-async function Navigatemovies(id){
+
+async function Navigatemovies(id: string){
     const nextid = parseInt(id.slice(5,6));
     populateimg(nextid);
 }
 
-async function getUpcomingMovies(selection){
+// Used in hero
+let movieList: Array<heroMovieList>;
+
+async function getUpcomingMovies(){
     // Selection == 1 desktop
     // Selection == 2 tablet    
     // Selection == 3 mobile
     movieList = [];
     const {data} = await api(`movie/upcoming`);
-    const movies = data.results.slice(0,5);
+    const movies: Movie[] = data.results.slice(0,5);
     
-    const dotContainer = document.getElementById("dotContainer");
-    movies.forEach((movie,index) => {
+    movies.forEach((movie:Movie , index: number) => {
         if(movie.poster_path != null){
-            movieList.push([movie.title,movie.backdrop_path]);
+            movieList.push(
+                {
+                    title: movie.title,
+                    backdrop_path: movie.backdrop_path
+                });
         }
     });
-    populateimg(0,selection);
+    populateimg(0);
 
     return movieList;
 }
 
-function populateimg(middle){
-    const limitContainer = document.getElementById("limitContainer");
-    limitContainer.innerHTML = "";
+function populateimg(middle: number){
+    const limitContainer = document.getElementById("limitContainer")!;
+
     const dotContainer = document.createElement("div");
     dotContainer.classList.add("dot-container");
+
+
+    limitContainer.innerHTML = "";
     dotContainer.setAttribute("id","dotContainer");
     limitContainer.appendChild(dotContainer);
+
+
     for(let i = 0;i<movieList.length;i++){
         const dot = document.createElement("div");
         dot.classList.add("dot-container__dot");
@@ -53,33 +69,35 @@ function populateimg(middle){
         const img = document.createElement("img");
         if(i==middle){
             const dot = document.getElementById("dotss"+i);
-            dot.className = "dot-container__dot--selected"
-
+            if(dot!=null){
+                dot.className = "dot-container__dot--selected"
+            }
             img.classList.add("hero__image--center");
 
         }else{
             img.classList.add("hero__image");
         }
         if(i<0){
-            img.setAttribute("src",'https://image.tmdb.org/t/p/original/'+movieList[movieList.length + i][1]);
-            img.setAttribute("alt", movieList[movieList.length + i][0] + ' poster image');
+            img.setAttribute("src",'https://image.tmdb.org/t/p/original/'+movieList[movieList.length + i]["backdrop_path"]);
+            img.setAttribute("alt", movieList[movieList.length + i]["title"] + ' poster image');
             img.setAttribute("id", "image" + (movieList.length + i));
             img.setAttribute("onclick","Navigatemovies(this.id)")
         }else if(i==middle){
-            img.setAttribute("src",'https://image.tmdb.org/t/p/original/'+movieList[i][1]);
-            img.setAttribute("alt", movieList[i][0] + ' poster image');
+            img.setAttribute("src",'https://image.tmdb.org/t/p/original/'+movieList[i]["backdrop_path"]);
+            img.setAttribute("alt", movieList[i]["title"] + ' poster image');
             img.setAttribute("id", "image" + (i));
         }else if(i>movieList.length-1){
-            img.setAttribute("src",'https://image.tmdb.org/t/p/original/'+movieList[i-movieList.length][1]);
-            img.setAttribute("alt", movieList[i-movieList.length][0] + ' poster image');
+            img.setAttribute("src",'https://image.tmdb.org/t/p/original/'+movieList[i-movieList.length]["backdrop_path"]);
+            img.setAttribute("alt", movieList[i-movieList.length]["title"] + ' poster image');
             img.setAttribute("id", "image" + (i-movieList.length));
             img.setAttribute("onclick","Navigatemovies(this.id)")
         }else{
-            img.setAttribute("src",'https://image.tmdb.org/t/p/original/'+movieList[i][1]);
-            img.setAttribute("alt", movieList[i][0] + ' poster image');
+            img.setAttribute("src",'https://image.tmdb.org/t/p/original/'+movieList[i]["backdrop_path"]);
+            img.setAttribute("alt", movieList[i]["title"] + ' poster image');
             img.setAttribute("id", "image" + (i));
             img.setAttribute("onclick","Navigatemovies(this.id)")
         }
+        
         limitContainer.appendChild(img);
     }
 }
@@ -87,8 +105,8 @@ function populateimg(middle){
 // Used in "top" section (asside)
 async function getTrendingMoviesPreview(){
     const {data} = await api(`movie/top_rated`);
-    const movies = data.results.slice(0,5);
-    const assideTop = document.getElementById("aside_top");
+    const movies: Movie[] = data.results.slice(0,5);
+    const assideTop = document.getElementById("aside_top")!;
     assideTop.innerHTML = "";
 
     const topTitle = document.createElement('H3');
@@ -142,29 +160,36 @@ async function getTrendingMoviesPreview(){
 
 //used in genres sections(main) 
 
+type genreListType = {
+    [key: number]: genreMovieList[];
+}
+let genreList: genreListType;
 
-let genreList = {};
-
-function NavigateGenre(genreId,dir){
+function NavigateGenre(genreId:number,dir:string){
     if(dir=="right"){
-        const carouselImageGroup = document.getElementById("carouselImageStrip"+genreId);
+        const carouselImageGroup = document.getElementById("carouselImageStrip"+genreId)!;
         carouselImageGroup.scrollLeft += 330;
     }else{
-        const carouselImageGroup = document.getElementById("carouselImageStrip"+genreId);
+        const carouselImageGroup = document.getElementById("carouselImageStrip"+genreId)!;
         carouselImageGroup.scrollLeft -= 330;
     }
 }
 
-async function getMoviesByGenre(genreId,elementId){
+async function getMoviesByGenre(genreId: number, elementId: string){
     const {data} = await api(`discover/movie?with_genres=${genreId}`);
-    const movies = data.results.slice(0,10);
-    let list = [];
+    const movies: Movie[] = data.results.slice(0,10);
+    let genreMovieList: genreMovieList[] = [];
     movies.forEach(movie => {
-        list.push(movie.backdrop_path)
+        genreMovieList.push({
+            backdrop_path: movie.backdrop_path 
+        })
     });
-    genreList[genreId] = list;
 
-    const imageGroup = document.getElementById(elementId);
+    genreList[genreId] = genreMovieList;
+
+
+
+    const imageGroup = document.getElementById(elementId)!;
     const div = document.createElement("div");
     div.classList.add("carousel__image_strip");
     
@@ -183,19 +208,19 @@ async function getMoviesByGenre(genreId,elementId){
 // used in lower section
 
 let selected = "btn1"
-async function getFilteredMovies(argument,id){
+async function getFilteredMovies(argument: string,id: string){
     const {data} = await api(`discover/movie?${argument}`);
-    const movies = data.results;
+    const movies: Movie[] = data.results;
     
     if(selected!=id){
-        const lastSelected = document.getElementById(selected);
-        const newSelected = document.getElementById(id);
+        const lastSelected = document.getElementById(selected)!;
+        const newSelected = document.getElementById(id)!;
         selected = id;
         lastSelected.className = "lower__button";
         newSelected.className = "lower__button--selected";
     }
 
-    const lowerContent = document.getElementById("lowerContent");
+    const lowerContent = document.getElementById("lowerContent")!;
     lowerContent.replaceChildren();
     
     movies.forEach(movie => {

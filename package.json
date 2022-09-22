@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/RodoPZ/MovieAPI/issues"
   },
-  "homepage": "https://github.com/RodoPZ/MovieAPI#readme"
+  "homepage": "https://github.com/RodoPZ/MovieAPI#readme",
+  "devDependencies": {
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }
