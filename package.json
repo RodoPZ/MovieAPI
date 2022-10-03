@@ -2,9 +2,11 @@
   "name": "movieapi",
   "version": "1.0.0",
   "description": "Web page made for practicing REST API",
-  "main": "index.html",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "server" : "npx parcel index.html",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,9 @@
   },
   "homepage": "https://github.com/RodoPZ/MovieAPI#readme",
   "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.7.0",
+    "process": "^0.11.10",
     "typescript": "^4.8.3"
   },
   "dependencies": {

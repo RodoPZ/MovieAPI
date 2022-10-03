@@ -105,3 +105,6 @@ dist
 
 #Secrets.js 
 src/secret.js
+
+#Parcel
+.parcel-cache/

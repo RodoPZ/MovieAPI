@@ -32,25 +32,25 @@
     </nav>
     <section class="hero">
         <div class="limit_container" id="limitContainer">
-            <div class="dot-container" id="dotContainer">
+            <!-- <div class="dot-container" id="dotContainer">
 
-                <!-- <div class="dot-container__dot"></div>
-                <div class="dot-container__dot--selected"></div> -->
+                <div class="dot-container__dot"></div>
+                <div class="dot-container__dot--selected"></div>
 
-            </div>
+            </div> -->
             <!-- <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image">
             <img class="hero__image--center" src="./images/img/poster_hero.png" alt="movie poster image">
             <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image"> -->
         </div>
     </section>
     <main class="main_section">
-        <section class="carousel_section">
-            <article class="carousel">
+        <section class="carousel_section" id="carouselSection">
+            <!-- <article class="carousel">
                 <H2 class="carousel__title">Terror</H2>
                 <div class="carousel__image_group" id="imageGroup1">
-                    <!-- <img class="carousel_image" src="./images/img/poster_backdrops.png" alt="movie backdrop"> -->
+
                     <div class="Navigation_container__next">
-                        <svg class="carousel__next" onclick="NavigateGenre(27,'right')"  viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="carousel__next" onclick="GetByGenre.NavigateGenre(27,MoviegenreIds.right)"  viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
                         </svg>
                     </div>
@@ -62,41 +62,7 @@
 
                 </div>
             </article>
-    
-            <article class="carousel">
-                <H2 class="carousel__title">Comedia</H2>
-                <div class="carousel__image_group" id="imageGroup2">
-                    <!-- <img class="carousel_image" src="./images/img/poster_backdrops.png" alt="movie backdrop"> -->
-                    <div class="Navigation_container__next">
-                        <svg class="carousel__next" onclick="NavigateGenre(35,'right')" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
-                        </svg>
-                    </div>
-                    <div class="Navigation_container__last">
-                        <svg class="carousel__last" onclick="NavigateGenre(35,'left')" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
-                        </svg>
-                    </div>
-              </div>
-            </article>
-    
-            <article class="carousel">
-                <H2 class="carousel__title">Acción</H2>
-                <div class="carousel__image_group" id="imageGroup3">
-                    <!-- <img class="carousel_image" src="./images/img/poster_backdrops.png" alt="movie backdrop"> -->
-                    <div class="Navigation_container__next">
-                        <svg class="carousel__next" onclick="NavigateGenre(28,'right')" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
-                        </svg>
-                    </div>
-                    <div class="Navigation_container__last">
-                        <svg class="carousel__last" onclick="NavigateGenre(28,'left')" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.90283 0L0 1.88L6.18084 8L0 14.12L1.90283 16L10 8L1.90283 0Z"/>
-                        </svg>
-                    </div>
-
-              </div>
-            </article>
+             -->
         </section>
         <aside class="top" id="aside_top">
             <H3 class="top__title">Top</H3>
@@ -119,6 +85,7 @@
     <section class="lower_section">
         <article class="lower">
             <div class="lower__button_container">
+                
                 <button id="btn1" class="lower__button--selected" type="button" onclick="getFilteredMovies('sort_by=release_date.desc',this.id)">
                     <H4 class="lower__button_title"> Últimas </H4>
                 </button>
@@ -175,8 +142,7 @@
             <a class="lenguage__link font-style-body-2" href="">EN</a>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./src/secret.js"></script>
-    <script src="./src/main.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script async type="module" src="./dist/main.js"></script>
 </body>
 </html>
