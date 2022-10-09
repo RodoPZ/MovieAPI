@@ -62,8 +62,7 @@ export class LowerSection{
         }
 
         const data = await api(`discover/movie`,`sort_by=${sortby}`);
-        const unfilteredMovies: Movie[] = data.results;
-        const movies = unfilteredMovies.filter(movie=>movie.poster_path)
+        const movies: Movie[] = data.results.filter((movie:Movie)=>movie.poster_path)
         
         const lowerCard: NodeListOf<HTMLElement> = document.querySelectorAll("#lowerCard")
         lowerCard.forEach((card,index)=>{

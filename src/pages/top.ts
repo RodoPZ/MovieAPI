@@ -24,8 +24,8 @@ export class Top{
             cardContainer?.insertAdjacentHTML('beforeend',CardTemplate); 
         }
         const data = await api(`movie/top_rated`);
-        const unfilteredMovies: Movie[] = data.results.slice(0,5);
-        const movies: Movie[] = unfilteredMovies.filter(movie=>movie.backdrop_path)
+
+        const movies: Movie[] = data.results.slice(0,5).filter((movie: Movie)=>movie.backdrop_path)
 
         const cardImg: NodeListOf<HTMLImageElement> = document.querySelectorAll("#cardImg");
         cardImg.forEach((img,index) => {

@@ -22,9 +22,8 @@ export class Hero{
         this.movieList = [];
 
         const data = await api(`movie/upcoming`);
-        const unfilteredMovies: Movie[] = data.results.slice(0,5);
+        const movies: Movie[] = data.results.slice(0,5).filter((movie: Movie) =>movie.backdrop_path);
 
-        const movies: Movie[] = unfilteredMovies.filter(movie=>movie.backdrop_path)
         movies.forEach((movie:Movie , index: number) => {
             this.movieList.push(
                 {
