@@ -217,6 +217,10 @@ h6{
     height: 186px;
     z-index: 0;
 }
+.carousel_image_container{
+    width: 332px;
+    height: auto;
+}
 .carousel__image_group{
     width: calc(100vw - 332px - 25px) ;
     overflow: hidden;
@@ -270,6 +274,24 @@ h6{
     right: 14.25px;
     transform: translatey(-50%);
 }
+.skeleton_title{
+    width: 20%;
+    height: 40px;
+}
+
+.skeleton{
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: var(--surface-menos-1);
+      }
+    100% {
+        background-color: var(--on-surface-mas-1);
+    }
+}
+
 
 /* top */
 .top{
@@ -302,6 +324,7 @@ h6{
     overflow-y: scroll;
 }
 
+
 .card_container::-webkit-scrollbar {
     display: none; /* for Chrome, Safari, and Opera */
 }
@@ -319,6 +342,12 @@ h6{
     color: var(--on-surface);
     align-self: center;
 }
+
+.card__text_container_skeleton{
+    height: 40px;
+    width: 100px;
+}
+
 .Card__subtitle_container{
     display: flex;
     margin: 0px;    
@@ -377,9 +406,7 @@ h6{
 }
 
 .lower__image{
-    
-
-    width: inherit;
+    width: 216px;
     height: 324px;
 }
 .lower__title{
@@ -471,8 +498,6 @@ h6{
         flex-direction: row;
         width: calc(100vw - 30px);
     }
-
-
     .carousel__image_group{
         width: calc(100vw - 20px);
 

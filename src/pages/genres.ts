@@ -1,6 +1,6 @@
 import { Movie } from "../models/movie.model";
 import { genreMovieList } from "../models/movielist.model";
-import { api } from "./axios";
+import { api } from "./fetchFromApi";
 
 export enum direction{
     right = 330,
@@ -31,26 +31,12 @@ export enum MoviegenreIds{
 
 export class GetByGenre{
 
-    private genreList: Array<genreMovieList[]> = [];
-
     public NavigateGenre(genreId:MoviegenreIds, dir:direction){
         const carouselImageGroup = document.getElementById("carouselImageStrip"+genreId)!;
         carouselImageGroup.scrollLeft += dir;
     }
 
     async getMoviesByGenre(genreId: MoviegenreIds){
-        const {data} = await api(`discover/movie?with_genres=${genreId}`);
-        const movies: Movie[] = data.results.slice(0,10);
-        let genreMovieList: genreMovieList[] = [];
-        
-        movies.forEach(movie => {
-            genreMovieList.push({
-                backdrop_path: movie.backdrop_path 
-            })
-        });
-    
-        this.genreList[genreId] = genreMovieList;
-
         const genreHtmlTemplate = 
         `
             <article class="carousel">
@@ -70,25 +56,46 @@ export class GetByGenre{
                 </div>
             </article>
         `
+        
         const carouselSection = document.getElementById("carouselSection")!;
         carouselSection.insertAdjacentHTML('beforeend',genreHtmlTemplate);
 
         const imageGroup = document.getElementById("carouselImageStrip" + genreId)!;
 
-        this.genreList[genreId].forEach((item) =>{
-            const imgTemplate = `
-                <img class="carousel_image" src="https://image.tmdb.org/t/p/w1280/${item.backdrop_path}">
+        for (let index = 0; index < 10; index++) {
+            const imgTemplate = 
+            `
+                <div class="carousel_image_container">
+                    <img class="carousel_image skeleton" id="CarouselImage${genreId}" >
+                </div>
+
             `
             imageGroup.insertAdjacentHTML('beforeend',imgTemplate);
-        });
+        }
 
         let arrowLast = document.getElementById("carouselLast"+genreId)!;
         arrowLast.addEventListener("click",()=>this.NavigateGenre(genreId,direction.left));
 
         let arrowNext = document.getElementById("carouselNext"+genreId)!;
         arrowNext.addEventListener("click",()=>this.NavigateGenre(genreId,direction.right));
+
+        const data = await api('discover/movie',`with_genres=${genreId}`);
+
+        const unfilteredMovies: Movie[] = data.results.slice(0,10);
+        const movies: Movie[] = unfilteredMovies.filter(movie=>movie.backdrop_path)
+        let genreMovieList: genreMovieList[] = [];
         
-        return this.genreList;
+        movies.forEach(movie => {
+            genreMovieList.push({
+                backdrop_path: movie.backdrop_path 
+            })
+        });
+
+        const CarouselImage: NodeListOf<HTMLImageElement> = document.querySelectorAll("#CarouselImage"+genreId);
+        CarouselImage.forEach((image,index) => {
+            image.src = "https://image.tmdb.org/t/p/w780/"+genreMovieList[index].backdrop_path;
+            image.setAttribute("class","carousel_image");
+        });
     }
 
     

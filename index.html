@@ -38,6 +38,7 @@
                 <div class="dot-container__dot--selected"></div>
 
             </div> -->
+            
             <!-- <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image">
             <img class="hero__image--center" src="./images/img/poster_hero.png" alt="movie poster image">
             <img class="hero__image" src="./images/img/poster_hero.png" alt="movie poster image"> -->
@@ -66,7 +67,6 @@
         </section>
         <aside class="top" id="aside_top">
             <H3 class="top__title">Top</H3>
-            
             <!-- <div class="Card">
                 <img class="Card__img" src="./images/img/poster_image.png" alt="movie poster image">
                 <div class="Card__text_container">
@@ -78,15 +78,13 @@
                     </div>
                 </div>
             </div> -->
-     
         </aside>
     </main>
 
     <section class="lower_section">
         <article class="lower">
-            <div class="lower__button_container">
-                
-                <button id="btn1" class="lower__button--selected" type="button" onclick="getFilteredMovies('sort_by=release_date.desc',this.id)">
+            <div class="lower__button_container" id="lowerButtonContainer">
+                <!-- <button id="btn1" class="lower__button--selected" type="button" onclick="getFilteredMovies('sort_by=release_date.desc',this.id)">
                     <H4 class="lower__button_title"> Últimas </H4>
                 </button>
                 <button id="btn2" class="lower__button" type="button" onclick="getFilteredMovies('sort_by=vote_count.desc',this.id)">
@@ -94,14 +92,13 @@
                 </button>
                 <button id="btn3" class="lower__button" type="button"  onclick="getFilteredMovies('sort_by=popularity.desc',this.id)">
                     <H4 class="lower__button_title"> Populares </H4>
-                </button>
+                </button> -->
             </div>
             <div class="lower_content" id="lowerContent">
                 <!-- <div class="lower__card">
                     <img class="lower__image" src="./images/img/poster_image.png" alt="movie poster">
                     <H5 class="lower__title">Title</H5>
                 </div> -->
-
             </div>
 
         </article>
@@ -142,7 +139,6 @@
             <a class="lenguage__link font-style-body-2" href="">EN</a>
         </div>
     </footer>
-    <script async src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script async type="module" src="./dist/main.js"></script>
 </body>
 </html>
