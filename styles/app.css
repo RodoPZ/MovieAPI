@@ -217,7 +217,16 @@ h6{
     height: 186px;
     z-index: 0;
 }
+.carousel_image__title{
+    padding: 10px;
+    background-color: var(--surface);
+    color: var(--on-surface);
+    position: absolute;
+    bottom: 10px;
+    margin: 0px;
+}
 .carousel_image_container{
+    position: relative;
     width: 332px;
     height: auto;
 }

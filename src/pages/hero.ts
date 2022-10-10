@@ -2,11 +2,12 @@ import { heroMovieList } from "../models/movielist.model";
 import {api} from "./fetchFromApi";
 import { Movie } from "../models/movie.model";
 import { backdropSize } from "../models/movieSize.model";
+import { lazyLoading } from "../utils/lazyLoading";
 
 export class Hero{
     private movieList: Array<heroMovieList> = [];
 
-    private buildSkeleton(selected: number = 1){
+    private addSkeleton(selected: number = 1){
         const limitContainer = document.getElementById("limitContainer")!;
 
         for (let index = 0; index < 3; index++) {
@@ -17,7 +18,7 @@ export class Hero{
     }
 
     public async getUpcomingMovies(){
-        this.buildSkeleton();
+        this.addSkeleton();
 
         this.movieList = [];
 
@@ -78,25 +79,23 @@ export class Hero{
                 img.classList.add("hero__image");
             }
             if(i<0){
-                img.setAttribute("src",'https://image.tmdb.org/t/p/'+backdropSize.w1280+this.movieList[this.movieList.length + i]["backdrop_path"]);
+                img.setAttribute("data-src",'https://image.tmdb.org/t/p/'+backdropSize.w1280+this.movieList[this.movieList.length + i]["backdrop_path"]);
                 img.setAttribute("alt", this.movieList[this.movieList.length + i]["title"] + ' poster image');
-                img.setAttribute("id", "image" + (this.movieList.length + i));
                 img.addEventListener("click",()=>this.Navigatemovies(this.movieList.length + i), false)
+                
             }else if(i==selected){
-                img.setAttribute("src",'https://image.tmdb.org/t/p/'+backdropSize.w1280+this.movieList[i]["backdrop_path"]);
+                img.setAttribute("data-src",'https://image.tmdb.org/t/p/'+backdropSize.w1280+this.movieList[i]["backdrop_path"]);
                 img.setAttribute("alt", this.movieList[i]["title"] + ' poster image');
-                img.setAttribute("id", "image" + (i));
             }else if(i>this.movieList.length-1){
-                img.setAttribute("src",'https://image.tmdb.org/t/p/'+backdropSize.w1280+this.movieList[i-this.movieList.length]["backdrop_path"]);
+                img.setAttribute("data-src",'https://image.tmdb.org/t/p/'+backdropSize.w1280+this.movieList[i-this.movieList.length]["backdrop_path"]);
                 img.setAttribute("alt", this.movieList[i-this.movieList.length]["title"] + ' poster image');
-                img.setAttribute("id", "image" + (i-this.movieList.length));
                 img.addEventListener("click",()=>this.Navigatemovies(i-this.movieList.length), false)
             }else{
-                img.setAttribute("src",'https://image.tmdb.org/t/p/'+backdropSize.w1280+this.movieList[i]["backdrop_path"]);
+                img.setAttribute("data-src",'https://image.tmdb.org/t/p/'+backdropSize.w1280+this.movieList[i]["backdrop_path"]);
                 img.setAttribute("alt", this.movieList[i]["title"] + ' poster image');
-                img.setAttribute("id", "image" + (i));
                 img.addEventListener("click",()=>this.Navigatemovies(i), false)
             }
+            lazyLoading.observe(img)
             limitContainer.appendChild(img);
         }
     }

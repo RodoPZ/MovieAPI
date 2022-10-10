@@ -1,6 +1,7 @@
 import { api } from "./fetchFromApi";
 import { Movie } from "../models/movie.model";
 import { posterSizes } from "../models/movieSize.model";
+import { lazyLoading } from "../utils/lazyLoading";
 
 export enum sortBy{
     popularity_asc = "popularity.asc",
@@ -20,7 +21,7 @@ export enum sortBy{
 }
 
 export class LowerSection{
-    public _selected: string = "btn1";
+    private _selected: string = "btn1";
 
     public addbutton(title: string,idNumber:number, sortby: sortBy){
         const id: string = "btn" + idNumber;
@@ -31,12 +32,11 @@ export class LowerSection{
             </button>
         `
         LowerButtonContainer?.insertAdjacentHTML("beforeend",btn);
-        
         const button = document.getElementById(id);
         button?.addEventListener("click",()=>this.getFilteredMovies(sortby,id));       
     }
 
-    public addcontent(){
+    public addSkeleton(){
         const lowerContent = document.getElementById("lowerContent")!;
         lowerContent.innerHTML = "";
         for (let index = 0; index < 20; index++) {
@@ -46,18 +46,16 @@ export class LowerSection{
             `
             lowerContent.insertAdjacentHTML("beforeend",lowerCard);
         }
-        
     }
     
-    public async getFilteredMovies(sortby: sortBy,id: string = this._selected){        
+    public async getFilteredMovies(sortby: sortBy,id: string = this._selected){  
+        const selected = document.getElementById(this._selected)!;      
         if(this._selected!=id){
-            const lastSelected = document.getElementById(this._selected)!;
             const newSelected = document.getElementById(id)!;
             this._selected = id;
-            lastSelected.className = "lower__button";
+            selected.className = "lower__button";
             newSelected.className = "lower__button--selected";
         }else{
-            const selected = document.getElementById(this._selected)!;
             selected.className = "lower__button--selected";
         }
 
@@ -69,13 +67,15 @@ export class LowerSection{
             if( movies[index]) {
                 card.innerHTML = 
                 `
-                    <img class="lower__image" src="${'https://image.tmdb.org/t/p/'+posterSizes.w154+movies[index].poster_path}" alt="${movies[index].title + ' poster image'}">
+                    <img id="cardImg${index}" class="lower__image" data-src="${'https://image.tmdb.org/t/p/'+posterSizes.w154+movies[index].poster_path}" alt="${movies[index].title + ' poster image'}">
                     <h5 class="lower__title">${movies[index].title}</h5>
                 `
-                card.className = "lower__card ";
+                const cardimg = document.getElementById("cardImg"+index)!;
+                lazyLoading.observe(cardimg);
+                cardimg.onload = ()=>card.setAttribute("class","lower__card");
+
             }else{
                 card.remove();
-
             }
             
         });
