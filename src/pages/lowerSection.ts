@@ -22,6 +22,7 @@ export enum sortBy{
 
 export class LowerSection{
     private _selected: string = "btn1";
+    private currentPage: number =  2;
 
     public addbutton(title: string,idNumber:number, sortby: sortBy){
         const id: string = "btn" + idNumber;
@@ -46,6 +47,7 @@ export class LowerSection{
             `
             lowerContent.insertAdjacentHTML("beforeend",lowerCard);
         }
+
     }
     
     public async getFilteredMovies(sortby: sortBy,id: string = this._selected){  
@@ -67,7 +69,7 @@ export class LowerSection{
             if( movies[index]) {
                 card.innerHTML = 
                 `
-                    <img id="cardImg${index}" class="lower__image" data-src="${'https://image.tmdb.org/t/p/'+posterSizes.w154+movies[index].poster_path}" alt="${movies[index].title + ' poster image'}">
+                    <img id="cardImg${index}" class="lower__image" data-src="${'https://image.tmdb.org/t/p/'+posterSizes.w342+movies[index].poster_path}" alt="${movies[index].title + ' poster image'}">
                     <h5 class="lower__title">${movies[index].title}</h5>
                 `
                 const cardimg = document.getElementById("cardImg"+index)!;
@@ -79,9 +81,28 @@ export class LowerSection{
             }
             
         });
-
+        const lowerLoadMore = document.getElementById("lowerLoadMore");
+        lowerLoadMore?.addEventListener("click",()=>{this.getMoreMovies(sortby)});
 
     }
-    // 
     
+    public async getMoreMovies(sortby: sortBy){
+
+        const data = await api(`discover/movie`,`sort_by=${sortby}&page=${this.currentPage}`);
+        const movies: Movie[] = data.results.filter((movie:Movie)=>movie.poster_path)
+
+
+        const lowerContent = document.getElementById("lowerContent");
+        movies.forEach((movie,index)=>{
+            const card = `
+                <div class="lower__card" id="lowerCard" >
+                    <img class="lower__image" src="${'https://image.tmdb.org/t/p/'+posterSizes.w342+movies[index].poster_path}" alt="${movies[index].title + ' poster image'}">
+                    <h5 class="lower__title">${movies[index].title}</h5>
+                </div>
+            `
+            lowerContent?.insertAdjacentHTML("beforeend",card);
+        })
+        this.currentPage+=1;
+
+    }
 }

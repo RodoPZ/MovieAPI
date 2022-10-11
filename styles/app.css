@@ -423,6 +423,20 @@ h6{
     color: var(--on-surface);
 }
 
+.lower__load_more{
+    border-radius: 10px;
+    height: 60px;
+    width: 250px;
+    color: var(--primary);
+    margin: auto;
+    background-color: var(--surface);
+    border-color: var(--surface-mas-1);
+}
+.lower__load_more:hover{
+    color: var(--surface);
+    background-color: var(--primary);
+}
+
 
 /* footer */
 .footer{
@@ -584,6 +598,11 @@ h6{
         width: 15px;
         fill: var(--on-surface);
     }
+    .carousel_image__title{
+        line-height: 2rem;
+        font-size: 14px;
+        padding: 5px 10px;
+    }
 
 }
 
@@ -635,5 +654,9 @@ h6{
         line-height: 1.0rem;
         margin: 10px 0px 18px 10px;
     }
-
+    .carousel_image__title{
+        line-height: 1.5rem;
+        font-size: 10px;
+        padding: 2.5px 10px;
+    }
 }
