@@ -16,7 +16,6 @@ function api(section, args = "") {
     return __awaiter(this, void 0, void 0, function* () {
         const response = yield fetch(`${Url}${section}?api_key=${secret_1.APIKEY}&${args}`);
         const data = yield response.json();
-        console.log(data);
         return data;
     });
 }

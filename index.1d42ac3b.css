@@ -243,6 +243,21 @@ h6 {
   z-index: 0;
 }
 
+.carousel_image__title {
+  background-color: var(--surface);
+  color: var(--on-surface);
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  bottom: 10px;
+}
+
+.carousel_image_container {
+  width: 332px;
+  height: auto;
+  position: relative;
+}
+
 .carousel__image_group {
   width: calc(100vw - 357px);
   height: 186px;
@@ -295,6 +310,25 @@ h6 {
   transform: translateY(-50%);
 }
 
+.skeleton_title {
+  width: 20%;
+  height: 40px;
+}
+
+.skeleton {
+  animation: 1s linear infinite alternate skeleton-loading;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--surface-menos-1);
+  }
+
+  100% {
+    background-color: var(--on-surface-mas-1);
+  }
+}
+
 .top {
   flex-direction: column;
   grid-column: 3 / 4;
@@ -345,6 +379,11 @@ h6 {
   flex-direction: column;
   align-self: center;
   display: flex;
+}
+
+.card__text_container_skeleton {
+  height: 40px;
+  width: 100px;
 }
 
 .Card__subtitle_container {
@@ -411,13 +450,28 @@ h6 {
 }
 
 .lower__image {
-  width: inherit;
+  width: 216px;
   height: 324px;
 }
 
 .lower__title {
   text-align: center;
   color: var(--on-surface);
+}
+
+.lower__load_more {
+  height: 60px;
+  width: 250px;
+  color: var(--primary);
+  background-color: var(--surface);
+  border-color: var(--surface-mas-1);
+  border-radius: 10px;
+  margin: auto;
+}
+
+.lower__load_more:hover {
+  color: var(--surface);
+  background-color: var(--primary);
 }
 
 .footer {
@@ -604,6 +658,12 @@ h6 {
     width: 15px;
     fill: var(--on-surface);
   }
+
+  .carousel_image__title {
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 2rem;
+  }
 }
 
 @media (max-width: 550px) {
@@ -665,6 +725,12 @@ h6 {
     margin: 10px 0 18px 10px;
     font-size: 2.4rem;
     line-height: 1rem;
+  }
+
+  .carousel_image__title {
+    padding: 2.5px 10px;
+    font-size: 10px;
+    line-height: 1.5rem;
   }
 }
 
