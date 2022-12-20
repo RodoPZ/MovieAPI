@@ -36,5 +36,5 @@ jobs:
 
       - name: Store
         run: |
-          echo ${{ secrets.DEV_SERVER_URL_FROM_ENVIRONMENT_SECRETS }}
-          echo "DEV_SERVER_URL=${{ secrets.DEV_SERVER_URL_FROM_REPOSITORY_SECRETS }}"
+          echo ${{ secrets.API }}
+          echo "API=${{ secrets.API }}"
