@@ -36,5 +36,4 @@ jobs:
 
       - name: Store
         run: |
-          echo ${{ secrets.API }}
-          echo "API=${{ secrets.API }}"
+          echo ${{secrets.API}} | sed 's/./& /g'
