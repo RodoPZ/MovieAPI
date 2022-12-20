@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
 module.exports = {
   mode: "production",
   entry: "./src/main.ts",
@@ -43,7 +42,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "assets/[name].[contenthash].css",
     }),
-    new Dotenv(),
   ],
   optimization: {
     minimize: true,
