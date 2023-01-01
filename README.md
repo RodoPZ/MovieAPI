@@ -1,2 +1,4 @@
 # MovieAPI
-Example page I built for practicing REST API concepts 
+Example page made for practicing REST API concepts 
+
+[Live demo](https://rodopz.github.io/MovieAPI/)
