@@ -1,7 +1,7 @@
-import { Hero } from "./pages/hero";
-import { Top } from "./pages/top";
-import { GetByGenre, MoviegenreIds } from "./pages/genres";
-import { LowerSection, sortBy } from "./pages/lowerSection";
+import { Hero } from "./sections/hero";
+import { Top } from "./sections/top";
+import { GetByGenre, MoviegenreIds } from "./sections/genres";
+import { LowerSection, sortBy } from "./sections/lowerSection";
 import "./styles/app.css";
 
 // Used in hero
@@ -11,9 +11,9 @@ hero.getUpcomingMovies();
 //used in genres sections(main)
 let getByGenre = new GetByGenre();
 const genreList: MoviegenreIds[] = [
-  MoviegenreIds.Horror,
-  MoviegenreIds.Comedy,
-  MoviegenreIds.Action,
+  MoviegenreIds.Terror,
+  MoviegenreIds.Comedia,
+  MoviegenreIds.Acción,
 ];
 genreList.map((genre) => {
   getByGenre.getMoviesByGenre(genre);

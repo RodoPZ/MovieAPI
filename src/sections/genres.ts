@@ -1,5 +1,4 @@
 import { Movie } from "../models/movie.model";
-import { genreMovieList } from "../models/movielist.model";
 import { api } from "./fetchFromApi";
 import { lazyLoading } from "../utils/lazyLoading";
 
@@ -9,24 +8,24 @@ export enum direction {
 }
 
 export enum MoviegenreIds {
-  Action = 28,
-  Adventure = 12,
-  Animation = 16,
-  Comedy = 35,
-  Crime = 80,
-  Documentary = 99,
+  Acción = 28,
+  Aventura = 12,
+  Animación = 16,
+  Comedia = 35,
+  Crimen = 80,
+  Documental = 99,
   Drama = 18,
-  Family = 10751,
-  Fantasy = 14,
-  History = 36,
-  Horror = 27,
-  Music = 10402,
-  Mystery = 9648,
+  Familia = 10751,
+  Fantasía = 14,
+  Historia = 36,
+  Terror = 27,
+  Música = 10402,
+  Misterio = 9648,
   Romance = 10749,
-  Science_Fiction = 878,
+  Ciencia_Ficción = 878,
   TV_Movie = 10770,
-  Thriller = 53,
-  War = 10752,
+  Suspense = 53,
+  Guerra = 10752,
   Western = 37,
 }
 

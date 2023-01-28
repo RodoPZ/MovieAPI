@@ -24,19 +24,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist # The folder the action should deploy.
-
-# name: test
-# on: [push]
-# permissions:
-#   contents: write
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     environment: github-pages
-#     steps:
-#       - name: Checkout 🛎️
-#         uses: actions/checkout@v3
-
-#       - name: Store
-#         run: |
-#           echo ${{secrets.API}} | sed 's/./& /g'
