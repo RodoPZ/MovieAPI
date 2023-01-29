@@ -108,3 +108,5 @@ src/secret.js
 
 #Parcel
 .parcel-cache/
+# Local Netlify folder
+.netlify

@@ -483,13 +483,13 @@ h6 {
   width: inherit;
 }
 
-.lenguage {
+.lenguaje {
   display: inline-flex;
   gap: 29px;
   color: var(--on-surface);
 }
 
-.lenguage__link {
+.lenguaje__link {
   text-decoration: none;
   color: var(--on-surface);
 }

@@ -1,8 +1,7 @@
-const APIKEY = process.env.API;
-const Url = "https://api.themoviedb.org/3/";
-
 export async function api(section: string, args: string = "") {
-  const response = await fetch(`${Url}${section}?api_key=${APIKEY}&${args}`);
+  const response = await fetch(
+    `/.netlify/functions/fetch-movies?section=${section}&args=${args}`
+  );
   const data = await response.json();
-  return data;
+  return data.data;
 }
